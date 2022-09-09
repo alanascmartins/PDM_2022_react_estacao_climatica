@@ -1,17 +1,39 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import 'bootstrap/dist/css/bootstrap.css'
+import ReactDOM from 'react-dom'
+import React from 'react'
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//Função que define um componente react
+//export default function App (){
+
+//classe
+class App extends React.Component{
+    render(){
+        return (
+            <div>
+                Meu App
+            </div>
+        )
+
+    }
+}
+
+/*
+    //API js. geolocation dá acesso à localização do usuário
+    window.navigator.geolocation.getCurrentPosition(
+        //para não ficar bloqueado aguardando resposta do usuário, colocamos a instrução abaixo, para quando estiver disponível, executar:
+        (position) => {
+            console.log(position)
+        }
+    )
+    return (
+        <div>
+            Meu App
+        </div>
+    )
+}*/
+
+ReactDOM.render(
+    <App/>,
+    document.querySelector('#root')
+)
