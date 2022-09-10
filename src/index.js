@@ -38,14 +38,6 @@ class App extends React.Component{
         }
         return sul ? 'Outono' : 'Primavera'
     }
-        render(){
-        return(
-            <div>
-                Meu App
-            </div>
-        )
-    }
-}
 
     icones = {
         "Primavera" : "fa-seedling",
@@ -53,14 +45,15 @@ class App extends React.Component{
         "Outono": "fa-tree",
         "Inverno": "fa-snowman"
     }
-    render(){
+
+        render(){
         return (
             <div>
                 Meu App
             </div>
         )
-
     }
+}
 
 ReactDOM.render(
     <App/>,
