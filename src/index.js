@@ -46,10 +46,56 @@ class App extends React.Component{
         "Inverno": "fa-snowman"
     }
 
+    obterLocalizacao(){
+        //para acessar a api de localizaçõa (geolocation)
+
+        //função que faz a janelinha que pergunta ao usuario se ele permite usar a localização dele ou não
+        window.navigator.geolocation.getCurrentPosition(
+            //arrow function para obter a localização do usuario
+            (position) => {
+                let data = new Date()//obtem a data atual do sistema
+                let estacao = this.obterEstacao(data, position.coords.latitude) //passa a data atual do sistema e a latitude da localização do usuario
+                let icone = this.icones[estacao] //acessando os icones de cada estação
+                this.setState({
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
+                    data: data.toLocaleString(),//faz a conversao da data para aparecer data e hora
+                    estacao: estacao,
+                    icone: icone
+                })
+
+            }
+        )
+    }
+
         render(){
         return (
-            <div>
-                Meu App
+            <div className='container mt-2'>
+                <div className="row justify-content-center">
+                    <div className="col-md-8">
+                        <div className="card">
+                            <div className="card-body">
+                                <div className="d-flex align-items-center border rounded mb-2" style={{height: '6rem'}}>
+                                    <i className={`fas fa-5x ${this.state.icone}`}></i>
+                                    <p className="w-75 ms-3 text-center fs-1">
+                                        {`${this.state.estacao}`}
+                                    </p>
+                                </div>
+                                <div>
+                                    <p className="text-center">
+                                        {
+                                            this.state.latitude ?
+                                                `Coordenadas: ${this.state.latitude}, ${this.state.longitude}, Data: ${this.state.data}.`
+                                            :
+                                                `Clique no botão para saber sua estação climática`
+                                        } 
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
             </div>
         )
     }
